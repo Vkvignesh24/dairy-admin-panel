@@ -11,20 +11,26 @@ import {
 
 function StatCard({ label, value, hint, icon: Icon, tone = 'brand' }) {
   const tones = {
-    brand:   { bg: 'bg-brand-50',    text: 'text-brand-700',    ring: 'ring-brand-100' },
-    blue:    { bg: 'bg-blue-50',     text: 'text-blue-700',     ring: 'ring-blue-100' },
-    amber:   { bg: 'bg-amber-50',    text: 'text-amber-700',    ring: 'ring-amber-100' },
-    rose:    { bg: 'bg-rose-50',     text: 'text-rose-700',     ring: 'ring-rose-100' },
-    violet:  { bg: 'bg-violet-50',   text: 'text-violet-700',   ring: 'ring-violet-100' },
-    emerald: { bg: 'bg-emerald-50',  text: 'text-emerald-700',  ring: 'ring-emerald-100' },
+    brand: { bg: 'bg-brand-50', text: 'text-brand-700', ring: 'ring-brand-100' },
+    blue: { bg: 'bg-blue-50', text: 'text-blue-700', ring: 'ring-blue-100' },
+    amber: { bg: 'bg-amber-50', text: 'text-amber-700', ring: 'ring-amber-100' },
+    rose: { bg: 'bg-rose-50', text: 'text-rose-700', ring: 'ring-rose-100' },
+    violet: { bg: 'bg-violet-50', text: 'text-violet-700', ring: 'ring-violet-100' },
+    emerald: { bg: 'bg-emerald-50', text: 'text-emerald-700', ring: 'ring-emerald-100' },
   }[tone];
 
   return (
-    <div className="card card-hover">
-      <div className="flex items-start justify-between">
-        <div>
+    
+    <div className="card card-hover overflow-hidden">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
           <div className="text-[13px] font-medium font-semibold uppercase tracking-wider text-slate-500">{label}</div>
-          <div className="text-[30px] leading-none font-bold text-slate-900 mt-2 tracking-tight">{value}</div>
+          {/* <div className="text-[30px] leading-none font-bold text-slate-900 mt-2 tracking-tight">{value}</div> */}
+          <div className="mt-2 min-w-0">
+            <div className="text-[22px] sm:text-[26px] xl:text-[30px] leading-none font-bold text-slate-900 tracking-tight truncate">
+              {value}
+            </div>
+          </div>
           {hint && <div className="text-[13px] font-medium text-slate-500 mt-1.5 flex items-center gap-1">
             <ArrowUpRight className="w-3 h-3 text-emerald-500" /> {hint}
           </div>}
@@ -65,13 +71,13 @@ export default function Dashboard() {
       <PageHeader title="Dashboard" subtitle="Welcome back — here's what's happening today." />
 
       {/* Stats grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-        <StatCard label="Customers"        value={data.totalCustomers}                    icon={Users}         tone="brand" />
-        <StatCard label="Active Subs"      value={data.activeSubscriptions}               icon={CalendarCheck} tone="emerald" />
-        <StatCard label="Today Orders"     value={data.todayOrders}                       icon={ShoppingBag}   tone="blue" />
-        <StatCard label="Tomorrow Milk"    value={`${data.tomorrowMilkQuantity} L`}       icon={Milk}          tone="violet" hint="Computed" />
-        <StatCard label="Monthly Revenue"  value={fmtMoney(data.monthlyRevenue)}          icon={IndianRupee}   tone="amber" />
-        <StatCard label="Cancelled Today"  value={data.cancelledDeliveriesToday}          icon={XCircle}       tone="rose" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-4">
+        <StatCard label="Customers" value={data.totalCustomers} icon={Users} tone="brand" />
+        <StatCard label="Active Subs" value={data.activeSubscriptions} icon={CalendarCheck} tone="emerald" />
+        <StatCard label="Today Orders" value={data.todayOrders} icon={ShoppingBag} tone="blue" />
+        <StatCard label="Tomorrow Milk" value={`${data.tomorrowMilkQuantity} L`} icon={Milk} tone="violet" hint="Computed" />
+        <StatCard label="Monthly Revenue" value={fmtMoney(data.monthlyRevenue)} icon={IndianRupee} tone="amber" />
+        <StatCard label="Cancelled Today" value={data.cancelledDeliveriesToday} icon={XCircle} tone="rose" />
       </div>
 
       {/* Charts */}
