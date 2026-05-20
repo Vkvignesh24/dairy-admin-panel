@@ -71,7 +71,7 @@ export default function Dashboard() {
       <PageHeader title="Dashboard" subtitle="Welcome back — here's what's happening today." />
 
       {/* Stats grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         <StatCard label="Customers" value={data.totalCustomers} icon={Users} tone="brand" />
         <StatCard label="Active Subs" value={data.activeSubscriptions} icon={CalendarCheck} tone="emerald" />
         <StatCard label="Today Orders" value={data.todayOrders} icon={ShoppingBag} tone="blue" />
