@@ -20,14 +20,14 @@ function StatCard({ label, value, hint, icon: Icon, tone = 'brand' }) {
   }[tone];
 
   return (
-    
+
     <div className="card card-hover overflow-hidden">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <div className="text-[13px] font-medium font-semibold uppercase tracking-wider text-slate-500">{label}</div>
           {/* <div className="text-[30px] leading-none font-bold text-slate-900 mt-2 tracking-tight">{value}</div> */}
           <div className="mt-2 min-w-0">
-            <div className="text-[22px] sm:text-[26px] xl:text-[30px] leading-none font-bold text-slate-900 tracking-tight truncate">
+            <div className="text-[20px] sm:text-[24px] xl:text-[28px] leading-tight font-bold text-slate-900 tracking-tight break-words">
               {value}
             </div>
           </div>
